@@ -3,6 +3,7 @@ import { Server } from 'socket.io';
 import { createApp } from './app.js';
 import { connectDB } from './config/db.js';
 import { env } from './config/env.js';
+import { startKeepAlive } from './utils/keepAlive.js';
 import {
   initSocket,
   startStatusSimulator,
@@ -36,6 +37,7 @@ const startServer = async () => {
   server.listen(env.port, () => {
     // Startup confirmation is intentional for ops visibility
     process.stdout.write(`Server running on port ${env.port}\n`);
+    startKeepAlive();
   });
 };
 
