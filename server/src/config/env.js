@@ -2,14 +2,19 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const toNumber = (value, fallback) => {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : fallback;
-};
+const required = ['PORT', 'MONGO_URI', 'CLIENT_URL'];
+
+const missing = required.filter((key) => !process.env[key]);
+
+if (missing.length > 0) {
+  throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+}
 
 export const env = Object.freeze({
-  port: toNumber(process.env.PORT, 5000),
-  mongoUri: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/freshbite-food-order',
-  clientUrl: process.env.CLIENT_URL || 'http://localhost:5173',
+  port: Number(process.env.PORT),
+  mongoUri: process.env.MONGO_URI,
+  clientUrl: process.env.CLIENT_URL,
   nodeEnv: process.env.NODE_ENV || 'development',
 });
+
+console.log('[env]', env);
