@@ -1,7 +1,7 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { QuantityButton } from './QuantityButton';
 import { Button } from '../ui/Button';
-import { formatCurrency } from '../../utils/format';
+import { Currency } from '../ui/Currency';
 import { useCart } from '../../context/CartContext';
 
 export const CartItem = ({ item }) => {
@@ -18,7 +18,9 @@ export const CartItem = ({ item }) => {
         <div className="flex items-start justify-between gap-2">
           <div>
             <h4 className="truncate font-semibold text-white">{item.name}</h4>
-            <p className="text-sm font-medium text-brand-400">{formatCurrency(item.price)}</p>
+            <p className="text-sm font-medium text-brand-400">
+              <Currency value={item.price} />
+            </p>
           </div>
           <Button
             variant="ghost"
@@ -37,7 +39,7 @@ export const CartItem = ({ item }) => {
             onDecrease={() => decreaseQuantity(item._id)}
           />
           <p className="text-sm font-bold text-white">
-            {formatCurrency(item.price * item.quantity)}
+            <Currency value={item.price * item.quantity} />
           </p>
         </div>
       </div>

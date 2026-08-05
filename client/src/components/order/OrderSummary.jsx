@@ -1,4 +1,4 @@
-import { formatCurrency } from '../../utils/format';
+import { Currency } from '../ui/Currency';
 
 export const OrderSummary = ({ items, total }) => (
   <div className="surface p-5 shadow-soft sm:p-6">
@@ -8,21 +8,19 @@ export const OrderSummary = ({ items, total }) => (
         <li key={item._id || item.menuId} className="flex items-start justify-between gap-3 text-sm">
           <div>
             <p className="font-semibold text-white">{item.name}</p>
-            <p className="mt-0.5 text-white/45">
-              {item.quantity} × {formatCurrency(item.price)}
+            <p className="mt-0.5 inline-flex items-center gap-1 text-white/45">
+              {item.quantity} × <Currency value={item.price} />
             </p>
           </div>
           <p className="font-semibold text-white">
-            {formatCurrency(item.price * item.quantity)}
+            <Currency value={item.price * item.quantity} />
           </p>
         </li>
       ))}
     </ul>
     <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
       <span className="font-semibold text-white/70">Total</span>
-      <span className="font-display text-2xl font-bold text-brand-400">
-        {formatCurrency(total)}
-      </span>
+      <Currency value={total} className="font-display text-2xl font-bold text-brand-400" />
     </div>
   </div>
 );

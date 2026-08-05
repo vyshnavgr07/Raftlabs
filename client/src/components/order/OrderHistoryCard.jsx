@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { formatCurrency, formatDateTime } from '../../utils/format';
+import { formatDateTime } from '../../utils/format';
 import { STATUS_LABELS } from '../../constants/order';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
+import { Currency } from '../ui/Currency';
 
 const statusTone = (status) => {
   if (status === 'DELIVERED') return 'green';
@@ -30,8 +31,8 @@ export const OrderHistoryCard = ({ order }) => (
       </div>
       <div>
         <p className="text-white/40">Total</p>
-        <p className="mt-1 font-display text-lg font-bold text-brand-400">
-          {formatCurrency(order.total)}
+        <p className="mt-1">
+          <Currency value={order.total} className="font-display text-lg font-bold text-brand-400" />
         </p>
       </div>
       <div className="sm:col-span-2">

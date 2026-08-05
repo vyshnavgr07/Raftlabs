@@ -2,7 +2,7 @@ import { StarIcon, ClockIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react
 import toast from 'react-hot-toast';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
-import { formatCurrencyAmount } from '../../utils/format';
+import { Currency } from '../ui/Currency';
 import { useCart } from '../../context/CartContext';
 
 export const FoodCard = ({ food }) => {
@@ -51,10 +51,7 @@ export const FoodCard = ({ food }) => {
         </div>
 
         <div className="flex items-center justify-between gap-3 border-t border-white/10 pt-3">
-          <p className="inline-flex items-baseline gap-0.5 text-xl font-bold tabular-nums leading-none text-brand-400">
-            <span className="translate-y-[0.08em] text-[0.92em]">₹</span>
-            <span>{formatCurrencyAmount(food.price)}</span>
-          </p>
+          <Currency value={food.price} className="text-xl font-bold text-brand-400" />
           {inCart ? (
             <Button
               variant="secondary"

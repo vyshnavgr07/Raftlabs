@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { CartItem } from './CartItem';
 import { EmptyState } from '../ui/EmptyState';
 import { Button } from '../ui/Button';
-import { formatCurrency } from '../../utils/format';
+import { Currency } from '../ui/Currency';
 import { useCart } from '../../context/CartContext';
 
 export const Cart = ({ onClose }) => {
@@ -33,9 +33,7 @@ export const Cart = ({ onClose }) => {
       <div className="space-y-3 border-t border-white/10 pt-4">
         <div className="flex items-center justify-between text-base font-semibold">
           <span className="text-white">Subtotal</span>
-          <span className="font-display text-lg font-bold text-brand-400">
-            {formatCurrency(subtotal)}
-          </span>
+          <Currency value={subtotal} className="font-display text-lg font-bold text-brand-400" />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <Button variant="secondary" onClick={clearCart}>

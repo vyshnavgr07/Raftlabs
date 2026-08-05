@@ -5,7 +5,8 @@ import { Loader } from '../components/ui/Loader';
 import { EmptyState } from '../components/ui/EmptyState';
 import { Button } from '../components/ui/Button';
 import { OrderSummary } from '../components/order/OrderSummary';
-import { formatCurrency, formatDateTime } from '../utils/format';
+import { formatDateTime } from '../utils/format';
+import { Currency } from '../components/ui/Currency';
 
 export const OrderSuccessPage = () => {
   const { id } = useParams();
@@ -57,8 +58,8 @@ export const OrderSuccessPage = () => {
             <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
               Total paid
             </p>
-            <p className="mt-1 font-display text-2xl font-bold text-brand-400">
-              {formatCurrency(order.total)}
+            <p className="mt-1">
+              <Currency value={order.total} className="font-display text-2xl font-bold text-brand-400" />
             </p>
           </div>
           <div>
