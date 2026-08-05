@@ -42,7 +42,7 @@ export const OrderSuccessPage = () => {
           />
           <div className="relative">
             <CheckBadgeIcon className="mx-auto h-14 w-14 text-brand-400" />
-            <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <h1 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">
               Order placed!
             </h1>
             <p className="mt-3 text-white/70">

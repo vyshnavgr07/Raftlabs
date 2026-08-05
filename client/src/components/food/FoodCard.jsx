@@ -51,7 +51,7 @@ export const FoodCard = ({ food }) => {
         </div>
 
         <div className="flex items-center justify-between gap-3 border-t border-white/10 pt-3">
-          <p className="font-display text-xl font-extrabold text-brand-400">
+          <p className="font-display text-xl font-bold text-brand-400">
             {formatCurrency(food.price)}
           </p>
           {inCart ? (

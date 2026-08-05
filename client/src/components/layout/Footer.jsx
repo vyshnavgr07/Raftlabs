@@ -4,7 +4,7 @@ export const Footer = () => (
   <footer className="mt-auto border-t border-white/10 bg-[#0c0b09] text-white">
     <div className="container-app flex flex-col items-start justify-between gap-6 py-12 sm:flex-row sm:items-end">
       <div>
-        <p className="font-display text-2xl font-extrabold tracking-tight">
+        <p className="font-display text-2xl font-bold tracking-tight">
           Fresh<span className="text-brand-400">Bite</span>
         </p>
         <p className="mt-2 max-w-sm text-sm text-white/60">

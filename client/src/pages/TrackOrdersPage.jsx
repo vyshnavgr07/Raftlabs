@@ -39,7 +39,7 @@ export const TrackOrdersPage = () => {
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-400">
           Order history
         </p>
-        <h1 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+        <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
           Track your orders
         </h1>
         <p className="mt-2 text-white/60">

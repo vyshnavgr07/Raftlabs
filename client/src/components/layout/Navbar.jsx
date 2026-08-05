@@ -26,10 +26,10 @@ export const Navbar = () => {
       <header className="sticky top-0 z-40 border-b border-white/10 bg-[#12100e]/85 backdrop-blur-md">
         <div className="container-app flex h-16 items-center justify-between gap-4 sm:h-[4.25rem]">
           <Link to="/" className="group flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 font-display text-sm font-extrabold text-white transition group-hover:bg-brand-500">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 font-display text-sm font-bold text-white transition group-hover:bg-brand-500">
               FB
             </span>
-            <span className="font-display text-xl font-extrabold tracking-tight text-white">
+            <span className="font-display text-xl font-bold tracking-tight text-white">
               Fresh<span className="text-brand-400">Bite</span>
             </span>
           </Link>

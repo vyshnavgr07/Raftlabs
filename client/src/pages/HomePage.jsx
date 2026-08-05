@@ -31,7 +31,7 @@ export const HomePage = () => {
         />
 
         <div className="container-app relative flex min-h-[78vh] flex-col justify-end pb-16 pt-28 sm:min-h-[85vh] sm:pb-24 sm:pt-32">
-          <p className="font-display text-4xl font-extrabold tracking-tight text-white animate-fade-up sm:text-6xl lg:text-7xl">
+          <p className="font-display text-4xl font-bold tracking-tight text-white animate-fade-up sm:text-6xl lg:text-7xl">
             FreshBite
           </p>
           <h1 className="mt-4 max-w-xl font-display text-2xl font-semibold leading-tight text-white animate-fade-up sm:text-4xl [animation-delay:120ms]">

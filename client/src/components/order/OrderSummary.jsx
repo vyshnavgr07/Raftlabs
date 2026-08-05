@@ -20,7 +20,7 @@ export const OrderSummary = ({ items, total }) => (
     </ul>
     <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
       <span className="font-semibold text-white/70">Total</span>
-      <span className="font-display text-2xl font-extrabold text-brand-400">
+      <span className="font-display text-2xl font-bold text-brand-400">
         {formatCurrency(total)}
       </span>
     </div>

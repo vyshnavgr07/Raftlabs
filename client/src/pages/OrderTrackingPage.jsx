@@ -37,7 +37,7 @@ export const OrderTrackingPage = () => {
     <div className="container-app py-10 sm:py-14">
       <div className="mb-8 flex flex-wrap items-start justify-between gap-4 animate-fade-up">
         <div>
-          <h1 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+          <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Order tracking
           </h1>
           <p className="mt-2 text-sm text-white/50">Order #{order._id}</p>

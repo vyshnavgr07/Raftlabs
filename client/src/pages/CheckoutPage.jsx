@@ -50,7 +50,7 @@ export const CheckoutPage = () => {
   return (
     <div className="container-app py-10 sm:py-14">
       <div className="mb-8 animate-fade-up">
-        <h1 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+        <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
           Checkout
         </h1>
         <p className="mt-2 text-white/60">Confirm your details and place your order.</p>
