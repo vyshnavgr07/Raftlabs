@@ -17,9 +17,8 @@ const startServer = async () => {
 
   const io = new Server(server, {
     cors: {
-      origin: env.clientUrl,
+      origin: '*',
       methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-      credentials: true,
     },
   });
 
