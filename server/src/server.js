@@ -3,7 +3,6 @@ import { Server } from 'socket.io';
 import { createApp } from './app.js';
 import { connectDB } from './config/db.js';
 import { env } from './config/env.js';
-import { seedMenuIfEmpty } from './utils/seedMenu.js';
 import {
   initSocket,
   startStatusSimulator,
@@ -12,7 +11,6 @@ import {
 
 const startServer = async () => {
   await connectDB();
-  await seedMenuIfEmpty();
 
   const app = createApp();
   const server = http.createServer(app);
