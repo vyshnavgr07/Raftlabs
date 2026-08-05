@@ -4,17 +4,25 @@ import { useMenu } from '../hooks/useMenu';
 import { FoodGrid } from '../components/food/FoodGrid';
 import { Loader } from '../components/ui/Loader';
 import { EmptyState } from '../components/ui/EmptyState';
+import { Pagination } from '../components/ui/Pagination';
+
+const PAGE_SIZE = 8;
 
 export const MenuPage = () => {
   const [search, setSearch] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('');
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedSearch(search.trim()), 300);
     return () => clearTimeout(timer);
   }, [search]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [debouncedSearch, category, sort]);
 
   const params = useMemo(
     () => ({
@@ -36,6 +44,18 @@ export const MenuPage = () => {
       ),
     [allFoods],
   );
+
+  const totalPages = Math.max(1, Math.ceil(foods.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const paginatedFoods = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return foods.slice(start, start + PAGE_SIZE);
+  }, [foods, currentPage]);
+
+  const handlePageChange = (nextPage) => {
+    setPage(nextPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="container-app py-10 sm:py-14">
@@ -109,7 +129,18 @@ export const MenuPage = () => {
         />
       ) : null}
 
-      {!showLoader && !isError && foods.length > 0 ? <FoodGrid foods={foods} /> : null}
+      {!showLoader && !isError && foods.length > 0 ? (
+        <>
+          <FoodGrid foods={paginatedFoods} />
+          <Pagination
+            page={currentPage}
+            totalPages={totalPages}
+            totalItems={foods.length}
+            pageSize={PAGE_SIZE}
+            onPageChange={handlePageChange}
+          />
+        </>
+      ) : null}
     </div>
   );
 };

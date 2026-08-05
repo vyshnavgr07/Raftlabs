@@ -19,7 +19,7 @@ export const CheckoutPage = () => {
         address: formValues.address,
         notes: formValues.notes || '',
       },
-      paymentMethod: formValues.paymentMethod,
+      paymentMethod: 'Paid',
       items: items.map((item) => ({
         menuId: item._id,
         quantity: item.quantity,

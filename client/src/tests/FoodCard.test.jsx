@@ -34,7 +34,7 @@ describe('FoodCard', () => {
     expect(screen.getByText('Burger')).toBeInTheDocument();
   });
 
-  test('adds item to cart', async () => {
+  test('adds item to cart and shows go to cart', async () => {
     const user = userEvent.setup();
     renderCard();
     await user.click(screen.getByRole('button', { name: /add/i }));
@@ -42,5 +42,6 @@ describe('FoodCard', () => {
     const stored = JSON.parse(localStorage.getItem(CART_STORAGE_KEY));
     expect(stored).toHaveLength(1);
     expect(stored[0].name).toBe('Test Burger');
+    expect(screen.getByRole('button', { name: /go to cart/i })).toBeInTheDocument();
   });
 });

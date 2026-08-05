@@ -3,7 +3,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
 import { checkoutSchema } from '../../utils/checkoutSchema';
-import { PAYMENT_METHODS } from '../../constants/order';
 
 export const CheckoutForm = ({ onSubmit, isSubmitting = false }) => {
   const {
@@ -17,7 +16,6 @@ export const CheckoutForm = ({ onSubmit, isSubmitting = false }) => {
       phone: '',
       address: '',
       notes: '',
-      paymentMethod: 'Cash On Delivery',
     },
   });
 
@@ -33,7 +31,7 @@ export const CheckoutForm = ({ onSubmit, isSubmitting = false }) => {
       <Input
         id="phone"
         label="Phone"
-        placeholder="+1 555 000 1234"
+        placeholder="9876543210"
         error={errors.phone?.message}
         {...register('phone')}
       />
@@ -54,31 +52,8 @@ export const CheckoutForm = ({ onSubmit, isSubmitting = false }) => {
         {...register('notes')}
       />
 
-      <fieldset className="space-y-2">
-        <legend className="text-sm font-semibold text-white/80">Payment method</legend>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {PAYMENT_METHODS.map((method) => (
-            <label
-              key={method}
-              className="flex cursor-pointer items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-sm font-medium text-white transition has-[:checked]:border-brand-500 has-[:checked]:bg-brand-600/20"
-            >
-              <input
-                type="radio"
-                value={method}
-                className="accent-brand-600"
-                {...register('paymentMethod')}
-              />
-              {method}
-            </label>
-          ))}
-        </div>
-        {errors.paymentMethod ? (
-          <span className="text-xs text-red-600">{errors.paymentMethod.message}</span>
-        ) : null}
-      </fieldset>
-
       <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-        {isSubmitting ? 'Placing order...' : 'Place order'}
+        {isSubmitting ? 'Processing...' : 'Pay'}
       </Button>
     </form>
   );

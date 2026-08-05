@@ -63,7 +63,7 @@ describe('React Query hooks', () => {
       order = await result.current.mutateAsync({
         customer: { name: 'A', phone: '1', address: 'Somewhere long enough' },
         items: [{ menuId: '1', quantity: 1 }],
-        paymentMethod: 'Online',
+        paymentMethod: 'Paid',
       });
     });
 

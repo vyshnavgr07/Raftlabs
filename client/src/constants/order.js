@@ -19,6 +19,6 @@ export const STATUS_LABELS = Object.freeze({
   DELIVERED: 'Delivered',
 });
 
-export const PAYMENT_METHODS = Object.freeze(['Cash On Delivery', 'Online']);
+export const PAYMENT_METHOD = 'Paid';
 
 export const CART_STORAGE_KEY = 'food-order-cart';

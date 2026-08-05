@@ -36,7 +36,7 @@ const buildOrderPayload = (menuId) => ({
     address: '123 Main Street, Springfield',
     notes: 'Ring the doorbell',
   },
-  paymentMethod: 'Cash On Delivery',
+  paymentMethod: 'Paid',
   items: [{ menuId: String(menuId), quantity: 2 }],
 });
 
@@ -114,14 +114,25 @@ describe('Orders API', () => {
     expect(response.body.data.estimatedDelivery).toBeDefined();
   });
 
-  test('GET /api/orders returns all orders', async () => {
+  test('GET /api/orders?phone= returns matching customer orders', async () => {
     const menuItem = await Menu.findOne();
     await request(app).post('/api/orders').send(buildOrderPayload(menuItem._id));
+    await request(app)
+      .post('/api/orders')
+      .send({
+        ...buildOrderPayload(menuItem._id),
+        customer: {
+          name: 'Other User',
+          phone: '9999999999',
+          address: 'Somewhere else',
+        },
+      });
 
-    const response = await request(app).get('/api/orders');
+    const response = await request(app).get('/api/orders?phone=5551234567');
 
     expect(response.status).toBe(200);
     expect(response.body.data).toHaveLength(1);
+    expect(response.body.data[0].customer.phone).toContain('555');
   });
 
   test('PATCH /api/orders/:id/status updates status', async () => {

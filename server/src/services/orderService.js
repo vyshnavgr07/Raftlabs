@@ -58,7 +58,7 @@ export const createOrder = async (payload, onCreated) => {
   const order = await orderRepository.createOrder({
     customer: payload.customer,
     items,
-    paymentMethod: payload.paymentMethod,
+    paymentMethod: 'Paid',
     status: ORDER_STATUS.ORDER_RECEIVED,
     total,
     estimatedDelivery: calculateEstimatedDelivery(),
@@ -71,7 +71,13 @@ export const createOrder = async (payload, onCreated) => {
   return order;
 };
 
-export const getOrders = async () => orderRepository.findAllOrders();
+export const getOrders = async (query = {}) => {
+  if (query.phone) {
+    return orderRepository.findOrdersByPhone(query.phone);
+  }
+
+  return orderRepository.findAllOrders();
+};
 
 export const getOrderById = async (id) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {

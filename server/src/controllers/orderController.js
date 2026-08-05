@@ -13,12 +13,15 @@ export const createOrder = asyncHandler(async (req, res) => {
   });
 });
 
-export const getOrders = asyncHandler(async (_req, res) => {
-  const orders = await orderService.getOrders();
+export const getOrders = asyncHandler(async (req, res) => {
+  const { phone } = req.query;
+  const orders = await orderService.getOrders({ phone });
 
   return sendSuccess(res, {
     statusCode: HTTP_STATUS.OK,
-    message: 'Orders fetched successfully',
+    message: phone
+      ? 'Orders for this phone number fetched successfully'
+      : 'Orders fetched successfully',
     data: orders,
   });
 });

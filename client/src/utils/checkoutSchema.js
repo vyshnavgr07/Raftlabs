@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { PAYMENT_METHODS } from '../constants/order';
 
 export const checkoutSchema = z.object({
   name: z
@@ -17,7 +16,4 @@ export const checkoutSchema = z.object({
     .min(5, 'Address must be at least 5 characters')
     .max(200, 'Address must be at most 200 characters'),
   notes: z.string().trim().max(300, 'Notes must be at most 300 characters').optional(),
-  paymentMethod: z.enum(PAYMENT_METHODS, {
-    errorMap: () => ({ message: 'Select a payment method' }),
-  }),
 });

@@ -2,7 +2,9 @@ import { formatCurrency, formatDateTime } from '../utils/format';
 
 describe('format utils', () => {
   test('formats currency', () => {
-    expect(formatCurrency(12.5)).toContain('12.50');
+    const formatted = formatCurrency(12.5);
+    expect(formatted).toContain('12.50');
+    expect(formatted).toMatch(/₹|INR/);
   });
 
   test('formats datetime and handles empty values', () => {

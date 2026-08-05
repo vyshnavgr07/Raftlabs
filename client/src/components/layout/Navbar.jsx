@@ -18,9 +18,8 @@ const linkClass = ({ isActive }) =>
   }`;
 
 export const Navbar = () => {
-  const { itemCount } = useCart();
+  const { itemCount, isCartOpen, openCart, closeCart } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
 
   return (
     <>
@@ -42,6 +41,9 @@ export const Navbar = () => {
             <NavLink to="/menu" className={linkClass}>
               Menu
             </NavLink>
+            <NavLink to="/track" className={linkClass}>
+              Track
+            </NavLink>
             <NavLink to="/checkout" className={linkClass}>
               Checkout
             </NavLink>
@@ -52,7 +54,7 @@ export const Navbar = () => {
               variant="secondary"
               size="sm"
               className={`relative ${itemCount > 0 ? 'animate-cart-pop' : ''}`}
-              onClick={() => setCartOpen(true)}
+              onClick={openCart}
               aria-label="Open cart"
             >
               <ShoppingBagIcon className="h-5 w-5" />
@@ -85,6 +87,9 @@ export const Navbar = () => {
               <NavLink to="/menu" className={linkClass} onClick={() => setMobileOpen(false)}>
                 Menu
               </NavLink>
+              <NavLink to="/track" className={linkClass} onClick={() => setMobileOpen(false)}>
+                Track
+              </NavLink>
               <NavLink
                 to="/checkout"
                 className={linkClass}
@@ -97,8 +102,8 @@ export const Navbar = () => {
         ) : null}
       </header>
 
-      <Modal open={cartOpen} title="Your cart" onClose={() => setCartOpen(false)}>
-        <Cart onClose={() => setCartOpen(false)} />
+      <Modal open={isCartOpen} title="Your cart" onClose={closeCart}>
+        <Cart onClose={closeCart} />
       </Modal>
     </>
   );

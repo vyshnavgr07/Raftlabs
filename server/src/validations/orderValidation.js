@@ -43,8 +43,9 @@ export const createOrderValidation = [
     .isLength({ max: 300 })
     .withMessage('Notes must be at most 300 characters'),
   body('paymentMethod')
-    .isIn(['Cash On Delivery', 'Online'])
-    .withMessage('Payment method must be Cash On Delivery or Online'),
+    .optional()
+    .isIn(['Paid'])
+    .withMessage('Payment method must be Paid'),
   body('items')
     .isArray({ min: 1 })
     .withMessage('At least one item is required'),

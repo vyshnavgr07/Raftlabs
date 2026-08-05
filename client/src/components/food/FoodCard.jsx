@@ -1,4 +1,4 @@
-import { StarIcon, ClockIcon, PlusIcon } from '@heroicons/react/24/solid';
+import { StarIcon, ClockIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/24/solid';
 import toast from 'react-hot-toast';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
@@ -6,7 +6,8 @@ import { formatCurrency } from '../../utils/format';
 import { useCart } from '../../context/CartContext';
 
 export const FoodCard = ({ food }) => {
-  const { addItem } = useCart();
+  const { addItem, isInCart, openCart } = useCart();
+  const inCart = isInCart(food._id);
 
   const handleAdd = () => {
     addItem(food);
@@ -53,10 +54,22 @@ export const FoodCard = ({ food }) => {
           <p className="font-display text-xl font-extrabold text-brand-400">
             {formatCurrency(food.price)}
           </p>
-          <Button onClick={handleAdd} size="sm" className="gap-1.5">
-            <PlusIcon className="h-4 w-4" />
-            Add
-          </Button>
+          {inCart ? (
+            <Button
+              variant="secondary"
+              size="sm"
+              className="gap-1.5"
+              onClick={openCart}
+            >
+              <ShoppingBagIcon className="h-4 w-4" />
+              Go to cart
+            </Button>
+          ) : (
+            <Button onClick={handleAdd} size="sm" className="gap-1.5">
+              <PlusIcon className="h-4 w-4" />
+              Add
+            </Button>
+          )}
         </div>
       </div>
     </article>
