@@ -55,12 +55,12 @@ export const CheckoutForm = ({ onSubmit, isSubmitting = false }) => {
       />
 
       <fieldset className="space-y-2">
-        <legend className="text-sm font-medium text-slate-700">Payment method</legend>
+        <legend className="text-sm font-semibold text-white/80">Payment method</legend>
         <div className="grid gap-2 sm:grid-cols-2">
           {PAYMENT_METHODS.map((method) => (
             <label
               key={method}
-              className="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-medium shadow-sm has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50"
+              className="flex cursor-pointer items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-sm font-medium text-white transition has-[:checked]:border-brand-500 has-[:checked]:bg-brand-600/20"
             >
               <input
                 type="radio"

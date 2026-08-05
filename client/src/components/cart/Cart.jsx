@@ -14,9 +14,9 @@ export const Cart = ({ onClose }) => {
         title="Your cart is empty"
         description="Add delicious items from the menu to get started."
         action={
-          <Button onClick={onClose} variant="secondary">
-            Browse menu
-          </Button>
+          <Link to="/menu" onClick={onClose}>
+            <Button variant="secondary">Browse menu</Button>
+          </Link>
         }
       />
     );
@@ -30,10 +30,12 @@ export const Cart = ({ onClose }) => {
         ))}
       </div>
 
-      <div className="space-y-3 border-t border-slate-100 pt-4">
+      <div className="space-y-3 border-t border-white/10 pt-4">
         <div className="flex items-center justify-between text-base font-semibold">
-          <span>Subtotal</span>
-          <span className="text-brand-700">{formatCurrency(subtotal)}</span>
+          <span className="text-white">Subtotal</span>
+          <span className="font-display text-lg font-bold text-brand-400">
+            {formatCurrency(subtotal)}
+          </span>
         </div>
         <div className="grid grid-cols-2 gap-3">
           <Button variant="secondary" onClick={clearCart}>

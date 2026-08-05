@@ -33,12 +33,12 @@ export const CheckoutPage = () => {
 
   if (items.length === 0) {
     return (
-      <div className="container-app py-12">
+      <div className="container-app py-16">
         <EmptyState
           title="Nothing to checkout"
           description="Add items to your cart before placing an order."
           action={
-            <Link to="/">
+            <Link to="/menu">
               <Button>Back to menu</Button>
             </Link>
           }
@@ -48,14 +48,16 @@ export const CheckoutPage = () => {
   }
 
   return (
-    <div className="container-app py-8 sm:py-10">
-      <div className="mb-6">
-        <h1 className="text-3xl font-black text-slate-900">Checkout</h1>
-        <p className="mt-1 text-slate-500">Confirm your details and place your order.</p>
+    <div className="container-app py-10 sm:py-14">
+      <div className="mb-8 animate-fade-up">
+        <h1 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+          Checkout
+        </h1>
+        <p className="mt-2 text-white/60">Confirm your details and place your order.</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-card sm:p-6">
+        <div className="surface p-5 shadow-soft sm:p-7">
           <CheckoutForm onSubmit={handleSubmit} isSubmitting={createOrder.isPending} />
         </div>
         <OrderSummary items={items} total={subtotal} />

@@ -19,7 +19,7 @@ export const OrderTrackingPage = () => {
 
   if (isError || !order) {
     return (
-      <div className="container-app py-12">
+      <div className="container-app py-16">
         <EmptyState
           title="Unable to track order"
           description="This order may have been deleted or the link is invalid."
@@ -34,53 +34,55 @@ export const OrderTrackingPage = () => {
   }
 
   return (
-    <div className="container-app py-8 sm:py-10">
-      <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
+    <div className="container-app py-10 sm:py-14">
+      <div className="mb-8 flex flex-wrap items-start justify-between gap-4 animate-fade-up">
         <div>
-          <h1 className="text-3xl font-black text-slate-900">Order tracking</h1>
-          <p className="mt-1 text-sm text-slate-500">Order #{order._id}</p>
+          <h1 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            Order tracking
+          </h1>
+          <p className="mt-2 text-sm text-white/50">Order #{order._id}</p>
         </div>
         <Badge tone="orange">{STATUS_LABELS[order.status] || order.status}</Badge>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-card">
-          <h2 className="mb-4 text-lg font-bold text-slate-900">Live status</h2>
+        <div className="surface p-5 shadow-soft sm:p-6">
+          <h2 className="mb-5 font-display text-xl font-bold text-white">Live status</h2>
           <StatusTimeline status={order.status} />
-          <p className="mt-4 text-xs text-slate-500">
+          <p className="mt-5 text-xs text-white/40">
             Status updates automatically every 10 seconds via Socket.io.
           </p>
         </div>
 
         <div className="space-y-5">
-          <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-card">
-            <h2 className="text-lg font-bold text-slate-900">Delivery details</h2>
-            <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+          <div className="surface p-5 shadow-soft sm:p-6">
+            <h2 className="font-display text-xl font-bold text-white">Delivery details</h2>
+            <dl className="mt-5 grid gap-4 text-sm sm:grid-cols-2">
               <div>
-                <dt className="text-slate-400">Customer</dt>
-                <dd className="font-semibold text-slate-800">{order.customer.name}</dd>
+                <dt className="text-white/40">Customer</dt>
+                <dd className="mt-1 font-semibold text-white">{order.customer.name}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">Phone</dt>
-                <dd className="font-semibold text-slate-800">{order.customer.phone}</dd>
+                <dt className="text-white/40">Phone</dt>
+                <dd className="mt-1 font-semibold text-white">{order.customer.phone}</dd>
               </div>
               <div className="sm:col-span-2">
-                <dt className="text-slate-400">Address</dt>
-                <dd className="font-semibold text-slate-800">{order.customer.address}</dd>
+                <dt className="text-white/40">Address</dt>
+                <dd className="mt-1 font-semibold text-white">{order.customer.address}</dd>
               </div>
               {order.customer.notes ? (
                 <div className="sm:col-span-2">
-                  <dt className="text-slate-400">Notes</dt>
-                  <dd className="font-semibold text-slate-800">{order.customer.notes}</dd>
+                  <dt className="text-white/40">Notes</dt>
+                  <dd className="mt-1 font-semibold text-white">{order.customer.notes}</dd>
                 </div>
               ) : null}
               <div>
-                <dt className="text-slate-400">Created</dt>
-                <dd className="font-semibold text-slate-800">{formatDateTime(order.createdAt)}</dd>
+                <dt className="text-white/40">Created</dt>
+                <dd className="mt-1 font-semibold text-white">{formatDateTime(order.createdAt)}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">Estimated delivery</dt>
-                <dd className="font-semibold text-slate-800">
+                <dt className="text-white/40">Estimated delivery</dt>
+                <dd className="mt-1 font-semibold text-white">
                   {formatDateTime(order.estimatedDelivery)}
                 </dd>
               </div>

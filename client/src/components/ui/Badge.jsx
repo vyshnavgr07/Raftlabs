@@ -1,14 +1,14 @@
 const tones = {
-  orange: 'bg-brand-100 text-brand-700',
-  green: 'bg-emerald-100 text-emerald-700',
-  blue: 'bg-sky-100 text-sky-700',
-  slate: 'bg-slate-100 text-slate-700',
-  red: 'bg-red-100 text-red-700',
+  orange: 'bg-brand-600/25 text-brand-300',
+  green: 'bg-emerald-500/20 text-emerald-300',
+  blue: 'bg-sky-500/20 text-sky-300',
+  slate: 'bg-white/10 text-white/80',
+  red: 'bg-red-500/20 text-red-300',
 };
 
 export const Badge = ({ children, tone = 'orange', className = '' }) => (
   <span
-    className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${tones[tone]} ${className}`}
+    className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide backdrop-blur-sm ${tones[tone]} ${className}`}
   >
     {children}
   </span>

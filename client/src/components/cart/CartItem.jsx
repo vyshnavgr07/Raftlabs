@@ -8,7 +8,7 @@ export const CartItem = ({ item }) => {
   const { increaseQuantity, decreaseQuantity, removeItem } = useCart();
 
   return (
-    <div className="flex gap-3 rounded-2xl border border-slate-100 bg-white p-3 shadow-sm">
+    <div className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
       <img
         src={item.image}
         alt={item.name}
@@ -17,13 +17,13 @@ export const CartItem = ({ item }) => {
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex items-start justify-between gap-2">
           <div>
-            <h4 className="truncate font-semibold text-slate-900">{item.name}</h4>
-            <p className="text-sm text-brand-700">{formatCurrency(item.price)}</p>
+            <h4 className="truncate font-semibold text-white">{item.name}</h4>
+            <p className="text-sm font-medium text-brand-400">{formatCurrency(item.price)}</p>
           </div>
           <Button
             variant="ghost"
             size="sm"
-            className="!px-2 text-red-500"
+            className="!px-2 text-red-400"
             onClick={() => removeItem(item._id)}
             aria-label={`Remove ${item.name}`}
           >
@@ -36,7 +36,7 @@ export const CartItem = ({ item }) => {
             onIncrease={() => increaseQuantity(item._id)}
             onDecrease={() => decreaseQuantity(item._id)}
           />
-          <p className="text-sm font-bold text-slate-800">
+          <p className="text-sm font-bold text-white">
             {formatCurrency(item.price * item.quantity)}
           </p>
         </div>
